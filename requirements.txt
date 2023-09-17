@@ -3,4 +3,9 @@ gunicorn
 whitenoise
 psycopg2-binary
 requests
+<<<<<<< HEAD
 urllib3
+=======
+urllib3
+django-environ
+>>>>>>> development
