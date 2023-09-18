@@ -1,15 +1,4 @@
 from django.shortcuts import render
-<<<<<<< HEAD
-
-# Create your views here.
-def show_main(request):
-    context = {
-        'name': 'Pak Aul',
-        'class': 'PBP E'
-    }
-
-    return render(request, "main.html", context)
-=======
 from django.http import HttpResponseRedirect
 from main.forms import ProductForm
 from django.urls import reverse
@@ -55,4 +44,3 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = Product.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
->>>>>>> development
