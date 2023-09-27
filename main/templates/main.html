@@ -1,15 +1,54 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Shopping List Page</h1>
+<h1 class="text-center">Selamat Datang!</h1>
+<h6 class="text-center">{{name}} - {{class}}</h6>
 
-<h5>Name:</h5>
+<pre>  </pre>
+<!-- <h5>Name:</h5>
 <p>{{name}}</p>
 
 <h5>Class:</h5>
-<p>{{class}}</p>
+<p>{{class}}</p> -->
 
-<table>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date Added</th>
+            <th scope="col">Adjusment</th>
+        </tr>
+    </thead>
+
+    {% for product in products %}
+
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.date_added}}</td>
+            <td>
+                <a href="{% url 'main:edit_product' product.pk %}">
+                    <button type="button" class="btn btn-secondary">Edit</button>
+                </a>
+                <a href="{% url 'main:delete_product' product.pk %}">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+
+    {% endfor %}
+    <tbody>
+
+</table>
+
+<!-- <table>
     <tr>
         <th>Name</th>
         <th>Price</th>
@@ -25,25 +64,38 @@
         <td>{{product.price}}</td>
         <td>{{product.description}}</td>
         <td>{{product.date_added}}</td>
+        <td>
+            <a href="{% url 'main:edit_product' product.pk %}">
+                <button>
+                    Edit
+                </button>
+            </a>
+            <a href="{% url 'main:delete_product' product.pk %}">
+                <button>
+                    Delete
+                </button>
+            </a>
+        </td>
     </tr>
     {% endfor %}
-</table>
+</table> -->
 
 <br />
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+<h6 class="text-center">Sesi terakhir login: {{ last_login }}</h6>
 
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Product
-    </button>
-</a>
+<div class="container bg-white">
+    <div class="col-md-12 text-center">
+        <a href="{% url 'main:create_product' %}">
+            <button type="button" class="btn btn-primary">Add New Product</button>
+        </a>
 
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
+        <a href="{% url 'main:logout' %}">
+            <button type="button" class="btn btn-danger">Logout</button>
+        </a>
+    </div>
+</div>
+
 
 
 
